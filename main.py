@@ -9,15 +9,21 @@ from aiogram.filters import CommandStart
 from aiogram.types import Message
 
 from handlers.user import user_handlars
+from handlers.admin import admin_handler
+from config import TOKEN
 
-TOKEN = "6516484967:AAEzhT_ZOBazXaFaNF5M0gKumQXZxub0gOk"
 
 dp = Dispatcher()
 
 
 async def run():
+    print("Start polling")
     bot = Bot(TOKEN)
+    
+    dp.include_router(admin_handler.admin_router)
+    
     dp.include_router(user_handlars.user_router)
+
     await dp.start_polling(bot)
 
 asyncio.run(run())
