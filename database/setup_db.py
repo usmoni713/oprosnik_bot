@@ -215,7 +215,12 @@ class Database:
             conditions=f"name_quiz = '{name_quiz}'"
 
         )
-        return res[0]
+        quiz = dict(res[0])
+        quiz["questions"] = json.loads(quiz.get("questions"))
+            
+
+        
+        return quiz
 
 
 table_names_with_fields = [
