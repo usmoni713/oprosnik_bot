@@ -1,6 +1,6 @@
 import asyncio
 import json
-from pprint import pprint
+
 from time import time
 from typing import Any
 import asyncpg
@@ -200,7 +200,6 @@ class Database:
         questions_:list
         ):
         questions = json.dumps(questions_)
-        print(f"\n\n{questions}\n\n")
         await self.fill_table(
             table_name="quizzes",
             field_names=("name_quiz", "status", "quantity_of_questions","questions"),
